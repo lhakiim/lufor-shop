@@ -41,7 +41,7 @@ django-admin startproject lufor_shop .
 ```
 python manage.py startapp main
 ```
-2. Daftarkan aplikasi `main` kedalam setting.py di direktori lufor_shop
+2. Daftarkan aplikasi `main` kedalam `setting.py` di direktori lufor_shop
 
 3. Buka models.py dan isi dengan
 ```
@@ -56,7 +56,7 @@ class shopEntry(models.Model):
 ```
 python manage.py makemigrations
 ```
-5. Menghubungkan view dan template dengan buka berkas view.py di main dan tambahkan fungsi show main
+5. Menghubungkan view dan template dengan buka berkas `view.py` di main dan tambahkan fungsi show main
 6. Konfigurasi url aplikasi `main` dengan membuat berkas `urls.py` dalam direktori main dan isi dengan kode:
 ```
 from django.urls import path
@@ -80,7 +80,7 @@ urlpatterns = [
     ...
 ]
 ```
-8. Jalankan proyek Django dengan perintah python `manage.py` runserver
+8. Jalankan proyek Django dengan perintah `python manage.py runserver`
 9. Bukalah http://localhost:8000/ di peramban web
 
 ##### Melakukan Deployment ke PWS
