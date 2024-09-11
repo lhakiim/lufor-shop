@@ -90,7 +90,10 @@ urlpatterns = [
 ![Bagan](https://github.com/lhakiim/lufor-shop/blob/main/Bagan_request_client.png)
 
 ### Fungsi Git dalam Pengembangan Perangkat Lunak
+Git berfungsi sebagai sistem kontrol versi terdistribusi. Git memungkinkan kita untuk melacak setiap perubahan yang dilakukan. Git memungkinkan kita untuk berkolaborasi tim dan dapat bekerja di branch masing-masing sehingga tidak mengganggu tim lainnya.
 
 ### Alasan Framework Django dijadikan Permulaan Pembelajaran Pengembangan Perangkat Lunak
+Django digunakan sebagai permulaan dalam belajar karena mudah untuk dipelajari. Mulai dari bahasa yang digunakan yaitu bahasa phyton. Kesederhanaan dari django ini memudahkan bagi pemula untuk memahami konsep-konsep yang ada. 
 
 ### Mengapa Model pada Django disebut sebagai ORM?
+Model django disebut sebagai ORM(Object-Relational Mapping) karena ia menggunakan ini untuk memetakan objek-objek Pyhton ke dalam tabel-tabel database. Dengan adanya ORM, antarmuka menjadi lebih mudah digunakan untuk memanipulasi data dalam database.
