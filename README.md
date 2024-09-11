@@ -3,6 +3,8 @@
 Luqmanul Hakim (2306152191)<br>
 PBP D
 
+PWS : [Lufor-Shop](http://luqmanul-hakim31-luforshop.pbp.cs.ui.ac.id/)
+
 ### Langkah-langkah Implementasi
 ##### Membuat Django baru
 1. Membuat directori baru bernama lufor-shop dengan perintah
