@@ -180,9 +180,10 @@ urlpatterns = [
 ---
 #### Hasil URL pada Postman
 - XML
-
+![XML](https://github.com/user-attachments/assets/06d72c7e-304b-4824-b121-5a9e924ac1be)
 - JSON
-
+![JSON](https://github.com/user-attachments/assets/8309ea26-be2b-4e98-8e02-4b121005085a)
 - XML By ID
-
+![XML_by_ID](https://github.com/user-attachments/assets/7eaefb77-0899-4147-8bfa-a53d459b92be)
 - JSON By ID
+![JSON_by_ID](https://github.com/user-attachments/assets/0265c1a1-ff64-4cc4-b707-a601a71f95f2)
