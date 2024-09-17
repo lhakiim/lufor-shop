@@ -5,8 +5,8 @@ PBP D
 
 PWS : [Lufor-Shop](http://luqmanul-hakim31-luforshop.pbp.cs.ui.ac.id/)
 ---
-[Tugas2](#Tugas-2)
-[Tugas3](#Tugas-3)
+- [Tugas2](#Tugas-2)
+- [Tugas3](#Tugas-3)
 # Tugas 2
 ### Langkah-langkah Implementasi
 ##### Membuat Django baru

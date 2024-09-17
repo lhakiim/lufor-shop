@@ -154,27 +154,27 @@
 </html>
 
 <div class="table-container">
-{% if not shop_entries %}
-<p>Belum ada product pada lufor shop.</p>
-{% else %}
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Descriptions</th>
-  </tr>
+    {% if not shop_entries %}
+    <p style="text-align: center;">Belum ada produk pada lufor shop.</p>
+    {% else %}
+    <table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Descriptions</th>
+    </tr>
 
-  {% comment %} Berikut cara memperlihatkan data shop di bawah baris ini 
-  {% endcomment %} 
-  {% for shop_entry in shop_entries %}
-  <tr>
-    <td>{{shop_entry.name}}</td>
-    <td>Rp.{{shop_entry.price}}</td>
-    <td>{{shop_entry.descriptions}}</td>
-  </tr>
-  {% endfor %}
-</table>
-{% endif %}
+    {% comment %} Berikut cara memperlihatkan data shop di bawah baris ini 
+    {% endcomment %} 
+    {% for shop_entry in shop_entries %}
+    <tr>
+        <td>{{shop_entry.name}}</td>
+        <td>Rp.{{shop_entry.price}}</td>
+        <td>{{shop_entry.descriptions}}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    {% endif %}
 </div>
 <br />
 <section style="text-align: center; margin-top: 40px;">
