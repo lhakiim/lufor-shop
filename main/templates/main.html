@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,3 +68,33 @@
 
 </body>
 </html>
+
+{% if not shop_entries %}
+<p>Belum ada data shop pada lufor shop.</p>
+{% else %}
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Descriptions</th>
+  </tr>
+
+  {% comment %} Berikut cara memperlihatkan data shop di bawah baris ini 
+  {% endcomment %} 
+  {% for mood_entry in mood_entries %}
+  <tr>
+    <td>{{shop_entry.name}}</td>
+    <td>{{shop_entry.price}}</td>
+    <td>{{shop_entry.Descriptions}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+<br />
+
+<a href="{% url 'main:create_shop_entry' %}">
+  <button>Add Product</button>
+</a>
+
+{% endblock content %}
