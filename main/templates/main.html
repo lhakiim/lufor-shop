@@ -30,11 +30,12 @@
             font-size: 24px;
             font-weight: bold;
             font-family: sans-serif
+            
         }
         nav {
             flex-grow: 1;
             text-align: center;
-            
+            justify-content: center;
         }
         nav ul {
             list-style-type: none;
@@ -92,6 +93,17 @@
             margin-top: 20px;
             margin-bottom: 20px;
         }
+        .logout-user {
+            display: inline-block;
+            background-color: #06c; /* warna untuk tombol */
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
         /* Styling untuk membuat table berada di tengah */
         .table-container {
@@ -118,6 +130,16 @@
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+        .fixed-last-login {
+            position: fixed;
+            bottom: 10px;  /* Jarak dari bawah */
+            right: 10px;   /* Jarak dari kanan */
+            background-color: rgba(0, 0, 0, 0.592);
+            color: white;
+            padding: 10px;
+            font-size: 12px;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -139,12 +161,18 @@
     <a href="#" class="icon">🔍</a> 
     <a href="#" class="icon">🛒</a> 
     <a href="#" class="icon">👤</a> 
+    <a href=""# class="icon">{{name}}</a>
+    <section style="text-align: center;"></section>
+    <a href="{% url 'main:logout' %}">
+        <button class="logout-user">Logout</button>
+    </a>
+</section>
     </div>
 </header>
 <div class="hero">
     <h2>Welcome to Lufor</h2>
     <p>e-commerce</p>
-    <p>{{name}}</p>
+    <p>{{nama}}</p>
     <p>{{npm}}</p>
     <p>{{class}}</p>
     
@@ -184,5 +212,7 @@
         <button class="add-product">Add Product</button>
     </a>
 </section>
+
+<h5 class="fixed-last-login">Last login: {{ last_login }}</h5>
 
 {% endblock content %}
