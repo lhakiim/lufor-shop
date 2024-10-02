@@ -297,7 +297,7 @@ Kegunaan <br>
 - Peningkatan penggunaan diberbagai device : karena memiliki bentuk yang fleksibel diberbagai device<br>
 - Penglaman pengguna yang lebih baik
 <br>
-Contoh aplikasi yang sudah menerapkan responsove design seperti aplikasi instagram, facebook dll.
+Contoh aplikasi yang sudah menerapkan responsive design seperti aplikasi instagram, facebook dll. Sedangkan aplikasi yagn belum menerapkan responsive design adalah scele 2015.
 
 
 ### Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
@@ -324,7 +324,7 @@ Contoh aplikasi yang sudah menerapkan responsove design seperti aplikasi instagr
 
 ### Jelaskan konsep flex box dan grid layout beserta kegunaannya!
 - Flexbox : merupakan sistem letak desain untuk mendeskripsikan baris atau kolom yang sangat berguna dalam pendesaian karena menjadi lebih responsif, fleksibel, dan dapat beradaptasi dengan ukuran lauar. Flexbox lebih cocok digunakan pada layout yang sederhana seperti 1 dimensi
-- Grid : merupakan sistem tata letak yang lebih kompleks daripada flexbox. Grid dapat diatur baris dan kolomnya sehingga lebih fleksibel dan dapat digunakan secara 2 dimensi yang memiliki banyak kolom dan baris. 
+- Grid : merupakan sistem tata letak yang lebih kompleks daripada flexbox. Grid dapat diatur baris dan kolomnya sehingga lebih fleksibel dan dapat digunakan secara 2 dimensi yang memiliki banyak kolom dan baris. Sehingga grid ini cocok untuk membuat layout halaman, dashboard dll.
 
 ### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
 
