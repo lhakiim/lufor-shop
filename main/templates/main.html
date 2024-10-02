@@ -1,218 +1,51 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Luforshop</title>
+{% endblock meta %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Lufor Shop</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            /* font-weight: bold; */
-        }
-        /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 30px;
-            border-bottom: 1px solid #ddd;
-            background-color: #fff;
-        }
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            font-family: sans-serif
-            
-        }
-        nav {
-            flex-grow: 1;
-            text-align: center;
-            justify-content: center;
-        }
-        nav ul {
-            list-style-type: none;
-        }
-        nav ul li {
-            display: inline-block;
-            margin: 0 15px;
-        }
+{% include 'navbar.html' %}
 
-        nav ul li a {
-            text-decoration: none;
-            color: #000;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        nav ul li a:hover {
-            color: #007aff; /* Color for hover effect */
-        }
-        
-        .right-icons {
-            display: flex;
-            align-items: center;
-        }
-
-        .right-icons a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: #000;
-            font-size: 18px;
-        }
-
-        .right-icons a:hover {
-            color: #007aff; /* Hover effect */
-        }
-        .icon {
-            font-size: 18px;
-        }
-
-        /* Hero Section */
-        .hero {
-            background-color: #f5f6f7;
-            padding: 60px 20px;
-            text-align: center;
-        }
-        .add-product {
-            display: inline-block;
-            background-color: #06c; /* warna untuk tombol */
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-        .logout-user {
-            display: inline-block;
-            background-color: #06c; /* warna untuk tombol */
-            color: #fff;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 20px;
-            font-size: 12px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        /* Styling untuk membuat table berada di tengah */
-        .table-container {
-            align-items: center; /* Vertical centering (optional) */
-        }
-
-        /* Style untuk tabel */
-        table {
-            border-collapse: collapse;
-            width: 80%; /* Lebar tabel */
-            margin: 20px auto; /* Spasi di sekitar tabel */
-            text-align: left;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-
-        th {
-            background-color: #f5f5f5;
-            font-weight: bold;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        .fixed-last-login {
-            position: fixed;
-            bottom: 10px;  /* Jarak dari bawah */
-            right: 10px;   /* Jarak dari kanan */
-            background-color: rgba(0, 0, 0, 0.592);
-            color: white;
-            padding: 10px;
-            font-size: 12px;
-            border-radius: 10px;
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    <div class="logo">Luforshop</div>
-    
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Product</a></li>
-            <li><a href="#">Categories</a></li>
-            <li><a href="#">Promo</a></li>
-            
-        </ul>
-    </nav>
-
-    <div class="right-icons">
-    <a href="#" class="icon">🔍</a> 
-    <a href="#" class="icon">🛒</a> 
-    <a href="#" class="icon">👤</a> 
-    <a href=""# class="icon">{{name}}</a>
-    <section style="text-align: center;"></section>
-    <a href="{% url 'main:logout' %}">
-        <button class="logout-user">Logout</button>
-    </a>
-</section>
+<div class="overflow-x-hidden px-4 md:px-8 pb-8 pt-24 min-h-screen bg-gray-100 flex flex-col">
+  <div class="p-2 mb-6 relative">
+    <div class="relative grid grid-cols-1 z-30 md:grid-cols-3 gap-8">
+      {% include "card_info.html" with title='NPM' value=npm %}
+      {% include "card_info.html" with title='Name' value=name %}
+      {% include "card_info.html" with title='Class' value=class %}
     </div>
-</header>
-<div class="hero">
-    <h2>Welcome to Lufor</h2>
-    <p>e-commerce</p>
-    <p>{{nama}}</p>
-    <p>{{npm}}</p>
-    <p>{{class}}</p>
+    <div class="w-full px-6  absolute top-[44px] left-0 z-20 hidden md:flex">
+      <div class="w-full min-h-4 bg-indigo-700">
+      </div>
+    </div>
+    <div class="h-full w-full py-6  absolute top-0 left-0 z-20 md:hidden flex ">
+      <div class="h-full min-w-4 bg-indigo-700 mx-auto">
+      </div>
+    </div>
+  </div>
+    <div class="fixed bottom-4 right-4 z-50">
+      <div class="flex rounded-full items-center bg-indigo-600 py-2 px-4 w-fit">
+        <h1 class="text-white text-center">Last Login: {{last_login}}</h1>
+      </div>
+    </div>
+    <div class="flex justify-center mb-6">
+        <a href="{% url 'main:create_shop_entry' %}" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+            Add New shop Entry
+        </a>
+    </div>
     
-</div>
-
-</body>
-</html>
-
-<div class="table-container">
     {% if not shop_entries %}
-    <p style="text-align: center;">Belum ada produk pada lufor shop.</p>
+    <div class="flex flex-col items-center justify-center min-h-[24rem] p-6">
+        <img src="{% static 'image/sedih-banget.gif' %}" alt="Sad face" class="w-32 h-32 mb-4"/>
+        <p class="text-center text-gray-600 mt-4">Belum ada data shop pada Luforshop.</p>
+    </div>
     {% else %}
-    <table>
-    <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Descriptions</th>
-    </tr>
-
-    {% comment %} Berikut cara memperlihatkan data shop di bawah baris ini 
-    {% endcomment %} 
-    {% for shop_entry in shop_entries %}
-    <tr>
-        <td>{{shop_entry.name}}</td>
-        <td>Rp.{{shop_entry.price}}</td>
-        <td>{{shop_entry.descriptions}}</td>
-    </tr>
-    {% endfor %}
-    </table>
+    <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 w-full">
+        {% for shop_entry in shop_entries %}
+            {% include 'card_shop.html' with shop_entry=shop_entry %}
+        {% endfor %}
+    </div>
     {% endif %}
 </div>
-<br />
-<section style="text-align: center; margin-top: 40px;">
-    <h2>Manage Your Products</h2>
-    <a href="{% url 'main:create_shop_entry' %}">
-        
-        <button class="add-product">Add Product</button>
-    </a>
 </section>
-
-<h5 class="fixed-last-login">Last login: {{ last_login }}</h5>
-
 {% endblock content %}

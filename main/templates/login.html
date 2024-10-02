@@ -5,28 +5,53 @@
 {% endblock meta %}
 
 {% block content %}
-<div class="login">
-  <h1>Login</h1>
-
-  <form method="POST" action="">
-    {% csrf_token %}
-    <table>
-      {{ form.as_table }}
-      <tr>
-        <td></td>
-        <td><input class="btn login_btn" type="submit" value="Login" /></td>
-      </tr>
-    </table>
-  </form>
-
-  {% if messages %}
-  <ul>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %} Don't have an account yet?
-  <a href="{% url 'main:register' %}">Register Now</a>
-</div>
-
+<section class="bg-gradient-to-r from-blue-50 to-purple-50 min-h-screen">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
+        <a href="#" class="flex items-center mb-8 text-3xl font-serif text-gray-800">
+            Luforshop
+        </a>
+        <div class="w-full bg-white rounded-2xl shadow-lg md:mt-0 sm:max-w-md xl:p-0 border border-gray-100">
+            <div class="p-8 space-y-6">
+                <h1 class="text-2xl font-bold leading-tight tracking-tight text-gray-800 text-center font-serif">
+                    Welcome Back
+                </h1>
+                <form class="space-y-5" method="POST" action="">
+                    {% csrf_token %}
+                    <div>
+                        <label for="username" class="block mb-2 text-sm font-medium text-gray-700">Username</label>
+                        <input type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-800 sm:text-sm rounded-lg focus:ring-purple-400 focus:border-purple-400 block w-full p-3 transition duration-150 ease-in-out" placeholder="Your username" required="">
+                    </div>
+                    <div>
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-700">Password</label>
+                        <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-800 sm:text-sm rounded-lg focus:ring-purple-400 focus:border-purple-400 block w-full p-3 transition duration-150 ease-in-out" required="">
+                    </div>
+                    <button type="submit" class="w-full text-white bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-3 text-center transition duration-150 ease-in-out transform hover:scale-105">Sign in</button>
+                    <p class="text-sm font-light text-gray-600 text-center">
+                        Don't have an account? <a href="{% url 'main:register' %}" class="font-medium text-purple-600 hover:underline">Create one</a>
+                    </p>
+                </form>
+                
+                {% if messages %}
+                <div class="mt-6 space-y-4">
+                    {% for message in messages %}
+                        {% if message.tags == "success" %}
+                            <div class="p-4 text-sm text-green-700 bg-green-100 rounded-lg" role="alert">
+                                {{ message }}
+                            </div>
+                        {% elif message.tags == "error" %}
+                            <div class="p-4 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">
+                                {{ message }}
+                            </div>
+                        {% else %}
+                            <div class="p-4 text-sm text-blue-700 bg-blue-100 rounded-lg" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}

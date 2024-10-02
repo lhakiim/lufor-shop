@@ -200,7 +200,8 @@ urlpatterns = [
 </details>
 
 # Tugas 4
-
+<details>
+<summary>Tugas 4</summary>
 ### Perbedaan antara HttpResponseRedirect() dan redirect()
 - `HttpResponseRedirect()` merupakan class dasar django yang digunakan untuk membuat respon dengan kode 302 (sementara) yang mengarahkan pengguna ke halaman url tertentu
 - `redirect()` merupakan fungsi modul `django.shortcuts` yang secara implisit membungkus `HttpResponseRedirect`. `redirect()` lebih praktis dan fleksibel dalam menerima argumen karena selain dapat menerima url ia juga dapat menerima model, view, dan nama url.
@@ -272,3 +273,90 @@ class MoodEntry(models.Model):
 python manage.py makemigrations
 python manage.py migrate
 ```
+</details>
+
+# Tugas 5
+
+### Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+- Inline Styles: memiliki prioritas tertinggi karena style didefinisikan secara langsung di dalam atribut `style`.
+- ID Selector : Didefinisikan dengan (#) contoh `#header`
+- Class Selector : misalnya .myclass :hover
+- Tag Selector : contohnya p , div, h1
+- Universal selector : contoh
+    ```
+    * {
+    color: black;
+    }
+    ```
+
+### Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!
+<br>
+Responsive design menjadi konsep penting dala pengembangan web dikarenakan ia memungkinkan web untuk beradaptasi dengan berbagai ukuran layar dan perangkat seperti laptop dan smartphone<br>
+Kegunaan <br>
+- Peningkatan penggunaan diberbagai device : karena memiliki bentuk yang fleksibel diberbagai device<br>
+- Penglaman pengguna yang lebih baik
+<br>
+Contoh aplikasi yang sudah menerapkan responsove design seperti aplikasi instagram, facebook dll.
+
+
+### Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+- Margin : Ruang diluar elemen yang  mengatur elemen tersebut dengan elemen lainnya. Margin terletah di luar elemen div
+  ```
+  div {
+    margin: 30px;
+  }
+  ```
+
+- Border : Garis disekitar elemen yang membatasi area elemen.
+    ```
+    div {
+    border: 2px solid black;
+    }
+    ```
+- Padding : Ruang yang didalam elemen, antara konten elemen dan border. Jika sebuah elemen memiliki teks atau gambar, padding memberikan ruang antara teks dan gambar.
+    ```
+    div {
+    padding: 20px;
+    }
+    ```
+
+### Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+- Flexbox : merupakan sistem letak desain untuk mendeskripsikan baris atau kolom yang sangat berguna dalam pendesaian karena menjadi lebih responsif, fleksibel, dan dapat beradaptasi dengan ukuran lauar. Flexbox lebih cocok digunakan pada layout yang sederhana seperti 1 dimensi
+- Grid : merupakan sistem tata letak yang lebih kompleks daripada flexbox. Grid dapat diatur baris dan kolomnya sehingga lebih fleksibel dan dapat digunakan secara 2 dimensi yang memiliki banyak kolom dan baris. 
+
+### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+
+1. Edit dan remove product
+<br>
+membuat method untuk edit dan remove product
+```python
+def edit_shop(request, id):
+    # Get mood entry berdasarkan id
+    shop = shopEntry.objects.get(pk = id)
+
+    # Set mood entry sebagai instance dari form
+    form = ShopEntryForm(request.POST or None, instance=shop)
+
+    if form.is_valid() and request.method == "POST":
+        # Simpan form dan kembali ke halaman awal
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_shop.html", context)
+```
+```python
+def delete_shop(request, id):
+    # Get mood berdasarkan id
+    shop = shopEntry.objects.get(pk = id)
+    # Hapus mood
+    shop.delete()
+    # Kembali ke halaman awal
+    return HttpResponseRedirect(reverse('main:show_main'))
+```
+2. Buatlah html baru dengan nama edit_shop untuk edit product
+3. Menambahkan url pattern pada urls.py
+4. tambahkan button edit dan hapus pada main.html
+5. Buat navbar yang dapat fleksibel terhadap berbagai ukuran seperti desktop dan smartphone.
+6. Kustomisasi desain menggunakan Tailwind pada setiap bagian seperti, login, register, main, add product, card info dan card product.
+7. Jangan lupa untuk menambahkan button add dan remove product

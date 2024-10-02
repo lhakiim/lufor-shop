@@ -1,0 +1,43 @@
+<div class="card glass w-96 relative transform transition-transform duration-500 hover:scale-105 rounded-xl">
+    <div class="bg-white shadow-xl rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl max-w-sm w-full">
+        <div class="relative">
+            <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="shop image" class="w-full h-48 object-cover transition-opacity duration-700 ease-in-out hover:opacity-80"/>
+            <div class="absolute top-2 left-1/2 -translate-x-1/2 flex items-center -space-x-2">
+                <div class="w-12 h-8 bg-gray-200 rounded-md opacity-80 -rotate-6"></div>
+                <div class="w-12 h-8 bg-gray-200 rounded-md opacity-80 rotate-6"></div>
+            </div>
+        </div>
+
+        <div class="p-5">
+            <h2 class="text-xl font-bold mb-2">{{shop_entry.shop}}</h2>
+            <p class="text-sm text-gray-600 mb-4">{{shop_entry.time}}</p>
+
+            <p class="font-semibold text-lg mb-2">{{shop_entry.name}}</p>
+            <p class="text-gray-700 mb-4">
+                <span class="bg-gradient-to-b from-transparent via-transparent to-purple-200 bg-no-repeat bg-[length:100%_0.3em] bg-[position:0_88%] hover:bg-[length:100%_100%] transition-all duration-300">{{shop_entry.descriptions}}</span>
+            </p>
+
+            <div class="mb-4">
+                <p class="font-semibold text-lg mb-2">Rp{{shop_entry.price}}</p>
+                <div class="relative">
+                    
+                </div>
+            </div>
+
+            <div class="flex justify-center">
+                <a href="{% url 'main:edit_shop' shop_entry.pk %}" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-l-xl transition duration-300 ease-in-out flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                    </svg>
+                    Edit
+                </a>
+                <a href="{% url 'main:delete_shop' shop_entry.pk %}" class="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-r-xl transition duration-300 ease-in-out flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                    </svg>
+                    Delete
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
