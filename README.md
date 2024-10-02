@@ -297,7 +297,7 @@ Kegunaan <br>
 - Peningkatan penggunaan diberbagai device : karena memiliki bentuk yang fleksibel diberbagai device<br>
 - Penglaman pengguna yang lebih baik
 <br>
-Contoh aplikasi yang sudah menerapkan responsive design seperti aplikasi instagram, facebook dll. Sedangkan aplikasi yagn belum menerapkan responsive design adalah scele 2015.
+Contoh aplikasi yang sudah menerapkan responsive design seperti aplikasi instagram, facebook dll. Sedangkan aplikasi yagn belum menerapkan responsive design adalah scele 2015 dan siakng.
 
 
 ### Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
