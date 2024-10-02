@@ -319,6 +319,7 @@ Contoh aplikasi yang sudah menerapkan responsove design seperti aplikasi instagr
     padding: 20px;
     }
     ```
+    ![Padding](https://github.com/user-attachments/assets/07b964bd-dfcf-4f48-9a2e-4943ebae2eee)
 
 ### Jelaskan konsep flex box dan grid layout beserta kegunaannya!
 - Flexbox : merupakan sistem letak desain untuk mendeskripsikan baris atau kolom yang sangat berguna dalam pendesaian karena menjadi lebih responsif, fleksibel, dan dapat beradaptasi dengan ukuran lauar. Flexbox lebih cocok digunakan pada layout yang sederhana seperti 1 dimensi
