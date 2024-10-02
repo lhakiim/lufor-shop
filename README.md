@@ -8,6 +8,7 @@ PWS : [Lufor-Shop](http://luqmanul-hakim31-luforshop.pbp.cs.ui.ac.id/)
 - [Tugas2](#Tugas-2)
 - [Tugas3](#Tugas-3)
 - [Tugas4](#Tugas-4)
+- [Tugas5](#Tugas-5)
 # Tugas 2
 <details>
 <summary>Tugas 2</summary>
@@ -329,7 +330,7 @@ Contoh aplikasi yang sudah menerapkan responsove design seperti aplikasi instagr
 1. Edit dan remove product
 <br>
 membuat method untuk edit dan remove product
-```python
+``` python
 def edit_shop(request, id):
     # Get mood entry berdasarkan id
     shop = shopEntry.objects.get(pk = id)
@@ -345,7 +346,7 @@ def edit_shop(request, id):
     context = {'form': form}
     return render(request, "edit_shop.html", context)
 ```
-```python
+``` python
 def delete_shop(request, id):
     # Get mood berdasarkan id
     shop = shopEntry.objects.get(pk = id)
@@ -357,6 +358,27 @@ def delete_shop(request, id):
 2. Buatlah html baru dengan nama edit_shop untuk edit product
 3. Menambahkan url pattern pada urls.py
 4. tambahkan button edit dan hapus pada main.html
+```
+...
+<tr>
+    ...
+    <td>
+        <a href="{% url 'main:edit_mood' mood_entry.pk %}">
+            <button>
+                Edit
+            </button>
+        </a>
+    </td>
+    <td>
+        <a href="{% url 'main:delete_mood' mood_entry.pk %}">
+            <button>
+                Delete
+            </button>
+        </a>
+    </td>
+</tr>
+...
+```
 5. Buat navbar yang dapat fleksibel terhadap berbagai ukuran seperti desktop dan smartphone.
 6. Kustomisasi desain menggunakan Tailwind pada setiap bagian seperti, login, register, main, add product, card info dan card product.
-7. Jangan lupa untuk menambahkan button add dan remove product
+
