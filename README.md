@@ -444,7 +444,7 @@ urlpatterns = [
 ]
 ```
 
-#### Buatlah sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan mood.
+#### Buatlah sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan mood. 
 Buat tombol pada `main.html` dibawah `shop_entry_card`
 ```html
 <div id="crudModal" tabindex="-1" aria-hidden="true" class="hidden fixed inset-0 z-50 w-full flex items-center justify-center bg-gray-800 bg-opacity-50 overflow-x-hidden overflow-y-auto transition-opacity duration-300 ease-out bg-opacity-50 backdrop-filter backdrop-blur-md ">

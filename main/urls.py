@@ -9,7 +9,7 @@ from main.views import login_user
 from main.views import logout_user
 from main.views import edit_shop, delete_shop, add_shop_entry_ajax
 app_name = 'main'
-
+ 
 urlpatterns = [
     path('', show_main, name='show_main'),
     path('create-shop-entry', create_shop_entry, name='create_shop_entry'),

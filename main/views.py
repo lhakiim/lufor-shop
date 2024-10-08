@@ -133,5 +133,4 @@ def add_shop_entry_ajax(request):
         user=user
     )
     new_shop.save()
-
     return HttpResponse(b"CREATED", status=201)
