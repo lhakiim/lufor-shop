@@ -7,7 +7,7 @@ from main.views import show_main, create_shop_entry, show_xml, show_json, show_x
 from main.views import register
 from main.views import login_user
 from main.views import logout_user
-from main.views import edit_shop, delete_shop
+from main.views import edit_shop, delete_shop, add_shop_entry_ajax
 app_name = 'main'
 
 urlpatterns = [
@@ -22,4 +22,5 @@ urlpatterns = [
     path('logout/', logout_user, name='logout'),
     path('edit-shop/<uuid:id>', edit_shop, name='edit_shop'),
     path('delete/<uuid:id>', delete_shop, name='delete_shop'),
+    path('create-shop-entry-ajax', add_shop_entry_ajax, name='add_shop_entry_ajax'),
 ]

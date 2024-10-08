@@ -13,18 +13,19 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+from django.utils.html import strip_tags
 
 # Create your views here.
 @login_required(login_url='/login')
 def show_main(request):
-    shop_entries = shopEntry.objects.filter(user=request.user)
 
     context = {
         'npm' : '2306152191',
         'nama': 'Luqmanul Hakim',
         'name': request.user.username,
         'class': 'PBP D',
-        'shop_entries': shop_entries,
         'last_login': request.COOKIES['last_login'],
     }
 
@@ -43,11 +44,11 @@ def create_shop_entry(request):
     return render(request, "create_shop_entry.html", context)
 
 def show_xml(request):
-    data = shopEntry.objects.all()
+    data = shopEntry.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
 
 def show_json(request):
-    data = shopEntry.objects.all()
+    data = shopEntry.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 def show_xml_by_id(request, id):
@@ -80,6 +81,8 @@ def login_user(request):
             response = HttpResponseRedirect(reverse("main:show_main"))
             response.set_cookie('last_login', str(datetime.datetime.now()))
             return response
+        else:
+            messages.error(request, "Invalid username or password. Please try again.")
 
     else:
         form = AuthenticationForm(request)
@@ -115,3 +118,20 @@ def delete_shop(request, id):
     shop.delete()
     # Kembali ke halaman awal
     return HttpResponseRedirect(reverse('main:show_main'))
+
+@csrf_exempt
+@require_POST
+def add_shop_entry_ajax(request):
+    name = strip_tags(request.POST.get("name"))
+    descriptions = strip_tags(request.POST.get("descriptions"))
+    price = request.POST.get("price")
+    user = request.user
+
+    new_shop = shopEntry(
+        name=name, descriptions=descriptions,
+        price=price,
+        user=user
+    )
+    new_shop.save()
+
+    return HttpResponse(b"CREATED", status=201)

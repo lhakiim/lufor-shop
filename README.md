@@ -277,6 +277,8 @@ python manage.py migrate
 </details>
 
 # Tugas 5
+<details>
+<summary>Tugas 5</summary>
 
 ### Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
 - Inline Styles: memiliki prioritas tertinggi karena style didefinisikan secara langsung di dalam atribut `style`.
@@ -381,5 +383,117 @@ def delete_shop(request, id):
 ...
 ```
 5. Buat navbar yang dapat fleksibel terhadap berbagai ukuran seperti desktop dan smartphone.
-6. Kustomisasi desain menggunakan Tailwind pada setiap bagian seperti, login, register, main, add product, card info dan card product.
+6. Kustomisasi desain menggunakan Tailwind pada setiap bagian seperti, login, register, main, add product, card info dan card product.<br><br>
+</details>
+---
 
+
+# Tugas 6
+
+### Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!
+- Membuat Web menjadi lebih menarik
+  Java script dapat membuat web menjadi lebih menarik dengan konten-konten dinamisnya. Ia dapat mengupdate page tanpa perlu dilakukan reload.
+- Menjalankan Web server
+  Javascript dapat berjalan di sisi server dengan adanya `node.js` sehingga dapat menjalankan aplikasi dan situs web berbasis browser.
+- Mudah untuk digunakan dan dipelajari
+  Javascript memiliki sintaks yang lebih singkat dan sederhana sehingga mudah untuk dipelajari
+- Pengalaman pengguna yang lebih baik
+  Pada javascript pengolahan dapat terjadi pada sisi pengguna (client side) sehingga dapat merespons tindakan pengguna lebih cepat tanpa harus bergantung pada server.
+- Memiliki komunitas dan ekosistem yang besar
+  Dengan banyaknya framework, library kita dapat menjadi lebih terbantu dalam pengembangan aplikasi web. Selain itu, komunitasnya yang besar dapat membantu mencari solusi apabila terjadi bug atau masalah.
+
+### Jelaskan fungsi dari penggunaan await ketika kita menggunakan fetch()! Apa yang akan terjadi jika kita tidak menggunakan await?
+Fungsi `await` digunakan untuk menunggu proses pengambilan data dari dari server sebelumnya untuk melanjutkan melakukan eksekusi berikutnya. Apabila tidak terdapat `await` ketika menggunakan fetch() kode akan melanjutkan eksekusi tanpa menunggu sehingga berkemungkinan tidak dapat mengakses hasil dari fetch() karena masih dalam keadaan pending.
+
+### Mengapa kita perlu menggunakan decorator csrf_exempt pada view yang akan digunakan untuk AJAX POST?
+`csrf_exempt` membuat Django tidak perlu untuk mengecek keberadaan dari `csrf_token` pada POST request yang dikirimkan. Dekorator ini akan mengecualikan view dari `csrf_token` sehingga memungkinkan untuk permintaan AJAX POST berjalan tanpa adanya `csrf_token`.
+
+### Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?
+- Keamanan
+  Validasi di frontend bisa dengan mudah diabaikan dan diubah oleh pengguna sehingga pengguna dapat memanipulasi kode javascript untuk mengirimkan permintaan secara langsung kepada server tanpa dilakukannya validasi. Pembersihan data yang dilakukan pada backend ini berguna untuk memastikan data tetap aman dan bersih.
+- Mengatasi pengguna yang menonaktifkan javascript
+  Jika validasi dilakukan pada frontend dan pengguna menonaktifkan javascript pada browser mereka maka ia dapat mengirimkan input yang tidak divalidasi keserver yang menyebabkan potensi keamanan dan kesalahan data.  
+
+### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+
+#### Ubahlah kode cards data mood agar dapat mendukung AJAX GET dan pengambilan data mood menggunakan AJAX GET.
+Tambahkan sebuah fungsi baru pada `views.py` untuk add product
+```python
+@csrf_exempt
+@require_POST
+def add_shop_entry_ajax(request):
+    name = strip_tags(request.POST.get("name"))
+    descriptions = strip_tags(request.POST.get("descriptions"))
+    price = request.POST.get("price")
+    user = request.user
+
+    new_shop = shopEntry(
+        name=name, descriptions=descriptions,
+        price=price,
+        user=user
+    )
+    new_shop.save()
+
+    return HttpResponse(b"CREATED", status=201)
+```
+tambahkan juga routing urlnya
+```python
+urlpatterns = [
+    ...
+    path('create-shop-entry-ajax', add_shop_entry_ajax, name='add_sho[_entry_ajax'),
+]
+```
+
+#### Buatlah sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan mood.
+Buat tombol pada `main.html` dibawah `shop_entry_card`
+```html
+<div id="crudModal" tabindex="-1" aria-hidden="true" class="hidden fixed inset-0 z-50 w-full flex items-center justify-center bg-gray-800 bg-opacity-50 overflow-x-hidden overflow-y-auto transition-opacity duration-300 ease-out bg-opacity-50 backdrop-filter backdrop-blur-md ">
+      <div id="crudModalContent" class="relative bg-white rounded-3xl shadow-lg w-5/6 sm:w-3/4 md:w-1/2 lg:w-1/3 mx-4 sm:mx-0 transform scale-95 opacity-0 transition-transform transition-opacity duration-300 ease-out">
+        <!-- Modal header -->
+        <div class="flex items-center justify-between p-4 border-b rounded-t-3xl bg-white">
+          <h3 class="text-xl font-semibold text-gray-900">
+            Add New Shop Entry
+          </h3>
+          <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" id="closeModalBtn">
+            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+        </div>
+    ...
+```
+
+#### Buatlah fungsi view baru untuk menambahkan product baru ke dalam basis data.
+Fungsi untuk menambahkan product dengan ajax. Apabila input valid maka ia akan otomatis refresh untuk menambah product dan langsung menutup ajax.
+```js
+function addShopEntry() {
+    fetch("{% url 'main:add_shop_entry_ajax' %}", {
+      method: "POST",
+      body: new FormData(document.querySelector('#shopEntryForm')),
+    })
+    .then(response => refreshShopEntries())
+    hideModal();
+    document.getElementById("shopEntryForm").reset(); 
+    document.querySelector("[data-modal-toggle='crudModal']").click();
+    return false;
+  }
+
+  document.getElementById("shopEntryForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    addShopEntry();
+    
+  })
+```
+
+#### Lakukan refresh halaman untuk menampilkan data product
+
+```js
+<script>
+    async function getShopEntries(){
+        return fetch("{% url 'main:show_json' %}").then((res) => res.json())
+    }
+    async function refreshShopEntries() {
+...
+</script>
+```
