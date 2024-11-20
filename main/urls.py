@@ -1,5 +1,5 @@
-from django.urls import path
-from main.views import show_main
+from django.urls import include, path
+from main.views import create_shop_flutter, show_main
 from main.views import show_main, create_shop_entry
 from main.views import show_main, create_shop_entry, show_xml
 from main.views import show_main, create_shop_entry, show_xml, show_json
@@ -7,7 +7,7 @@ from main.views import show_main, create_shop_entry, show_xml, show_json, show_x
 from main.views import register
 from main.views import login_user
 from main.views import logout_user
-from main.views import edit_shop, delete_shop, add_shop_entry_ajax
+from main.views import edit_shop, delete_shop, add_shop_entry_ajax, create_shop_flutter
 app_name = 'main'
  
 urlpatterns = [
@@ -23,4 +23,6 @@ urlpatterns = [
     path('edit-shop/<uuid:id>', edit_shop, name='edit_shop'),
     path('delete/<uuid:id>', delete_shop, name='delete_shop'),
     path('create-shop-entry-ajax', add_shop_entry_ajax, name='add_shop_entry_ajax'),
+    path('create-flutter/', create_shop_flutter, name='create_shop_flutter'),
+    path('auth/', include('authentication.urls')),
 ]
